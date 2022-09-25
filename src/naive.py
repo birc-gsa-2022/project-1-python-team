@@ -29,7 +29,8 @@ def main():
         for chr in genome:
             hits = naive(genome[chr], reads[read])
             for hit in hits:
-                _, _, edit = get_edits(genome[chr][hit:hit+len(reads[read])])
+                _, _, edit = get_edits(
+                    genome[chr][hit-1:hit+len(reads[read])-1], reads[read])
                 cigar = edits_to_cigar(edit)
                 out.append(
                     f'{read}\t{chr}\t{hit}\t{cigar}\t{reads[read]}')
