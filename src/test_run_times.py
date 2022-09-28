@@ -16,7 +16,10 @@ def main():
     genome = parse_fasta(args.genome)
     reads = parse_fastq(args.reads)
 
-    print(time_naive(genome, reads))
+    lin = time_linear(genome, reads)
+    naive = time_naive(genome, reads)
+    out = pd.concat((lin, naive["naive time"]), 1)
+    out.to_csv("out_table.csv", index=False)
 
     return 0
 
@@ -29,10 +32,10 @@ def time_naive(genome: dict[str, str], reads: dict[str, str]) -> pd.DataFrame:
             n.append(len(genome[chr]))
             m.append(len(reads[read]))
             cmd = f'naive("{genome[chr]}", "{reads[read]}")'
-            print(cmd)
-            ti = timeit.timeit(cmd, setup="from naive import naive")
+            ti = timeit.timeit(
+                cmd, setup="from naive import naive", number=100)
             time.append(ti)
-    out = pd.DataFrame({"n size": n, "m size": m, "time": time})
+    out = pd.DataFrame({"n size": n, "m size": m, "naive time": time})
     return out
 
 
@@ -43,11 +46,10 @@ def time_linear(genome: dict[str, str], reads: dict[str, str]) -> pd.DataFrame:
             print(f"processing {chr} {read}")
             n.append(len(genome[chr]))
             m.append(len(reads[read]))
-            cmd = f'linear("{genome[chr]}", "{reads[read]}")'
-            print(cmd)
-            ti = timeit.timeit(cmd, setup="from linear import linear")
+            cmd = f'lin("{genome[chr]}", "{reads[read]}")'
+            ti = timeit.timeit(cmd, setup="from lin import lin", number=100)
             time.append(ti)
-    out = pd.DataFrame({"n size": n, "m size": m, "time": time})
+    out = pd.DataFrame({"n size": n, "m size": m, "linear time": time})
     return out
 
 
