@@ -22,7 +22,7 @@ def lin(x: str, p: str) -> list[int]:
             j += 1
             i += 1
         if x[i] == p[j]:
-            if i-j == n-1:
+            if i-j > n-m:
                 break
             out.append(i - j)
             j = ba[j-1]
