@@ -10,7 +10,7 @@ def naive(x: str, p: str) -> list[int]:
     out: list[int] = []
     stop = len(p)
     for i, _ in enumerate(x):
-        if x[i:i+stop] == p:
+        if p and x[i:i+stop] == p:
             out.append(i+1)
     return out
 

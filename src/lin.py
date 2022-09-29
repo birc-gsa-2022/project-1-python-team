@@ -15,7 +15,7 @@ def lin(x: str, p: str) -> list[int]:
     ba = mailund_border_array(p)
     i, j = 0, 0
 
-    while i < n:
+    while i < n and p:
         while i < n and j < m and x[i] == p[j]:
             if j == m-1 or i == n-1:
                 break
