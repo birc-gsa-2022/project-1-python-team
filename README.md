@@ -133,13 +133,6 @@ We ran the functions with a completely random DNA string as input.
 The best case input for the naive algorithm is a string not containing the first letter in the search pattern. Worst possible case is a single letter repeat with a pattern also only consisting of that letter. Here it will have to go through each letter in the pattern for each position in the sequence.
 For the linear time algorithm we implimented KMP. Worst case is O(n+m) where the border array only contains 0's (there are no borders at all). Best case is exact repeats of search pattern, where the border array will allow biggest possible jumps.
 
-We assesed runtimes for the two algorithms with a set of DNA_markov()-generated sequences (this.fasta) and patterns generated with repeat_rand(rep_length=10). Below are the datapoints for the timings. Pattern length rises proportionally with sequence length starting at 3. 
+We assesed runtimes for the two algorithms with a set of DNA_markov()-generated sequences (this.fasta) and patterns generated with repeat_rand(rep_length=10). Below are the datapoints for the timings. Pattern length rises proportionally with sequence length starting at 3.
 
-```
-![](path/to/fig)
-```
-
-I am not ready to share my own results yet, so I will just show you a fast scooter.
-
-![](figs/scooter.jpg)
-
+![](figs/graph_1.png)
