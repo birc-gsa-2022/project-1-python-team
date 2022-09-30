@@ -16,7 +16,6 @@ def main() -> int:
                            help='length of first sequence, default = 100')
     argparser.add_argument("-n", "--n_sequences", type=int, nargs='?',
                            default=10, help='number of sequences to generate, default = 10')
-    # not used yet, but adds option to specify name of output file.
     argparser.add_argument("-o", "--output_file", type=str,
                            default="stdout", help='specify name of output file, default = STDOUT', nargs='?')
 
@@ -130,7 +129,7 @@ Write to fasta:
 def foo(times: int, length: int, f: Callable[[int, str], str]) -> "dict[str, str]":
     out: dict[str, str] = {}
     for i in range(times):
-        out[f"{f.__name__}_{i}"] = f(length * (i+1), "acgt")
+        out[f"{f.__name__}_{i}"] = f(length * (i+1), "ACGT")
     return out
 
 
