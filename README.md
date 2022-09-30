@@ -84,15 +84,39 @@ Once you have implemented the tools, fill out the report below.
 
 ### Insights you may have had while implementing and comparing the algorithms. 
 
-*Describe this here.*
+Andreas and Mailund are both legends.
 
 ### Problems encountered if any. 
 
-*Describe this here.*
+Indexing is a nightmare as usual. KMP should be easy but somehow isn't.
+Johan's Git syncronisation did not work at all. But now it is fixed, so hopefully you can also see his TA from now on.
 
 ### Experiments that verifies the correctness of your implementations.
 
-*Describe this here.*
+We validated lin.py by comparing result to the naive (naive.py) implementation on randomly generated data created with the functions in "data_gen.py" with different patterns/properties. Below is a short description of each piece of simulated data. We either generate alphabets of a random lengths up to 50 with the function make_alphabet() or use the DNA alphabet (ATCG). For functions that need weights make_random_weights() create random weights for the alphabets. For the DNA test we predefined weights.
+
+Below 
+"random"=="pseudo-random" -> True
+
+one_letter():
+Simply same repeating single letter from alphabet. Letter is randomly sampled from alphabet.
+
+tot_rand():
+Completely random sampling from alphabet.
+
+prob_rand(): 
+Random sampling from alphabet but with weighted probability for each letter in alphabet.
+
+repeat_rand():
+Completely random repeat of given length. Last repeat is truncated to fit desired length.
+
+repeat_rand_palindrome():
+Same af above but makes palindromic repeats. Last repeat is truncated to fit desired length.
+
+DNA_markov():
+Generates a DNA sequence using a markov chain with equal change for each stating base and then 70% chance of repeating A and T, 55% chance of repeating C and G and equal remaining probability to change to another letter (10 or 15%).
+
+
 
 ### Experiments validating the running time.
 
