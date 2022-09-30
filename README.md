@@ -136,3 +136,5 @@ For the linear time algorithm we implimented KMP. Worst case is O(n+m) where the
 We assesed runtimes for the two algorithms with a set of DNA_markov()-generated sequences (this.fasta) and patterns generated with repeat_rand(rep_length=10). Below are the datapoints for the timings. Pattern length rises proportionally with sequence length starting at 3.
 
 ![](figs/graph_1.png)
+
+Both seem linear, but for input like this, it should be fairly similar, since we will were seldom go through the entire pattern before continuing and thus never hit the worst case for the naive algorithm. The naive uses Python functions implimented in C, and is thus inherently faster by default.  
